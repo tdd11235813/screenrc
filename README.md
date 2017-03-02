@@ -34,5 +34,9 @@ alias emcsci="emacsclient -s workspaceS"
 
 ## Troubleshooting
 
-You will not find the .screen option `shell bash` as it prevents ssh to connect to the remote server. If you need that option ensure that there already is an ssh tunnel open (using ControlPersist in ssh config).
+- For nested screen sessions use `Ctrl-a a` to control inner screen session.
+- You will not find the .screen option `shell bash` as it prevents ssh to connect to the remote server. If you need that option ensure that there already is an ssh tunnel open (using ControlPersist in ssh config).
 
+## License
+
+Public Domain (using [CC0](https://creativecommons.org/publicdomain/zero/1.0/)).
