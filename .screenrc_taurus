@@ -1,0 +1,5 @@
+#!/bin/bash
+
+TAURUS_UPTIME=`[ -n "$(ps x|grep [t]aurus[^\.]*\.hrsk)" ] && ssh taurusl -t "uptime"`
+TAURUS_TXT=`echo $TAURUS_UPTIME | sed -n -r 's/.*([0-9]+ users)[^0-9]+([0-9,\. ]+)$/| Taurus \1 @ load: \2/p'`
+echo $(screen -ls | grep --color=no -o "$PPID[^[:space:]]*") $TAURUS_TXT

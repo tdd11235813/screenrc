@@ -1,0 +1,46 @@
+term screen-256color
+termcapinfo xterm* ti@:te@
+
+# Statusbar
+  backtick 0 0 10 sh -c 'sh ~/.screenrc_taurus'
+  caption always "%{=db ky}%` | %{.g}(load: %l)  %-21=%{=d .w}%D %d.%m.%Y %0c"
+  hardstatus alwayslastline "%{=b .W}%n%f %t %+010=%{-b .w} | %-Lw%{rW}%50>%n%f* %t%{-}%+Lw%<" #%?%-Lw%?%{.M}%n*%f %t%?(%u)%?%{.b}%?%+Lw%? %{.w}"
+# Options
+  defscrollback     10000           # set scrollback buffer to 10000
+  defutf8           on              # set utf8
+  vbell             off             # disable visual bell
+  startup_message   off             # disable startup message 'new screen ..'
+  altscreen         on
+  setenv            DISPLAY ':0'    # eg for mplayer
+  deflog            off             # enable logging
+  logfile           log/screen.%n         # set log location
+  nethack           off                   # nethack like notifications
+  defmonitor        off                   # turn off monitoring (for activity)
+  activity          "activity in %n"      # enable activity
+  multiuser         on                    # enable screen -x
+  autodetach        on                    # automatically detach upon hangup
+  defnonblock       1
+  mousetrack        off
+  msgwait           3
+# screen terminals
+#  screen -t emacs bash -i -l -c "ps x|grep [w]orkspaceC >& /dev/null || ems; emc -nw -c"
+  screen -t Build bash -i -l  
+  screen -t Compute bash -i -l
+#  screen -t emacs bash -i -l -c "ps x|grep [w]orkspaceS >& /dev/null || emssci; emcsci -nw -c"
+  select 0
+# get rid of silly xoff stuff
+  bind s split
+
+#display last bash command in shell title, HOSTNAME not updated dynamically when sshing inside a screen session
+#shelltitle '$ |bash'"$HOSTNAME:"  
+shelltitle '$ |'
+
+# F8 to turn the status bar off
+#bindkey -k k8 hardstatus alwayslastline
+# F9 to turn the status bar on
+#bindkey -k k9 hardstatus alwaysignore
+
+bindkey -k k1 stuff "screen^M"
+bindkey -k k2 screen -X ssh taurusl -t "cd cuda-workspace; /bin/bash -l -i"
+bindkey -k k3 prev
+bindkey -k k4 next
