@@ -1,0 +1,39 @@
+term screen-256color
+term xterm-256color
+termcapinfo xterm* ti@:te@
+
+# Statusbar
+  backtick 0 30 30 sh -c 'screen -ls | grep --color=no -o "$PPID[^[:space:]]*"'
+  caption always "%{= ky}%` | %{.g}(load: %l)  %-21=%{= .w}%D %d.%m.%Y %0c"
+  hardstatus alwayslastline "%{=b .W}%n%f %t %+010=%{-b .w} | %-Lw%{rW}%50>%n%f* %t%{-}%+Lw%<" #%?%-Lw%?%{.M}%n*%f %t%?(%u)%?%{.b}%?%+Lw%? %{.w}"
+# Options
+  defscrollback     10000           # set scrollback buffer to 10000
+  defutf8           on              # set utf8
+  vbell             off             # disable visual bell
+  startup_message   off             # disable startup message 'new screen ..'
+  altscreen         on
+  setenv            DISPLAY ':0'    # eg for mplayer
+  deflog            off             # enable logging
+  logfile           log/screen.%n         # set log location
+  nethack           off                   # nethack like notifications
+  defmonitor        off                   # turn off monitoring (for activity)
+  activity          "activity in %n"      # enable activity
+  multiuser         on                    # enable screen -x
+  autodetach        on                    # automatically detach upon hangup
+  defnonblock       1
+  msgwait           3
+# screen terminals
+#  screen -t emacs bash -i -l -c "ps x|grep [w]orkspaceC >& /dev/null || ems; emc -nw -c"
+  screen -t Build bash -i -l  
+  screen -t Compute bash -i -l
+#  screen -t emacs bash -i -l -c "ps x|grep [w]orkspaceS >& /dev/null || emssci; emcsci -nw -c"
+  select 0
+# get rid of silly xoff stuff
+  bind s split
+
+shelltitle '$ |'
+
+# F7 to go to previous term
+bindkey -k k7 prev
+# F8 to go to next term
+bindkey -k k8 next
