@@ -1,4 +1,4 @@
-term screen-256color
+#term screen-256color
 termcapinfo xterm* ti@:te@
 
 # Statusbar
@@ -13,7 +13,7 @@ termcapinfo xterm* ti@:te@
   altscreen         on
   setenv            DISPLAY ':0'    # eg for mplayer
   deflog            off             # enable logging
-  logfile           log/screen.%n         # set log location
+  logfile           screen.%n         # set log location
   nethack           off                   # nethack like notifications
   defmonitor        off                   # turn off monitoring (for activity)
   activity          "activity in %n"      # enable activity
@@ -40,8 +40,8 @@ shelltitle '$ |'
 # F9 to turn the status bar on
 #bindkey -k k9 hardstatus alwaysignore
 # F2 to create terminal with ssh to remote server
-bindkey -k k2 screen -X ssh taurusl -t "cd cuda-workspace; /bin/bash -l -i"
+#bindkey -k k2 screen -X ssh taurusl -t "cd cuda-workspace; /bin/bash -l -i"
 # F3 to go to previous term
-bindkey -k k3 prev
+#bindkey -k k3 prev
 # F4 to go to next term
-bindkey -k k4 next
+#bindkey -k k4 next
