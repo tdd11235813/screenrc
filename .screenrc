@@ -2,8 +2,8 @@
 termcapinfo xterm* ti@:te@
 
 # Statusbar
-  backtick 0 0 10 sh -c "sh $SCREENDIR/.screenrc_taurus"
-  caption always "%{=db ky}%` | %{.g}(load: %l)  %-21=%{=d .w}%D %d.%m.%Y %0c"
+  backtick 0 0 0 sh -c 'sh $SCREENDIR/.screenrc_taurus'
+  caption always "%{=db ky}%` | %{.g}[load: %l]  %-21=%{=d .w}%D %d.%m.%Y %0c"
   hardstatus alwayslastline "%{=b .W}%n%f %t %+010=%{-b .w} | %-Lw%{rW}%50>%n%f* %t%{-}%+Lw%<" #%?%-Lw%?%{.M}%n*%f %t%?(%u)%?%{.b}%?%+Lw%? %{.w}"
 # Options
   defscrollback     10000           # set scrollback buffer to 10000
@@ -23,10 +23,10 @@ termcapinfo xterm* ti@:te@
   mousetrack        off
   msgwait           3
 # screen terminals
-  screen -t emacs bash -i -l -c "ps x|grep [w]orkspaceC >& /dev/null || ems; emc -nw -c"
-  screen -t Build bash -i -l  
-  screen -t Compute bash -i -l
-  screen -t emacs bash -i -l -c "ps x|grep [w]orkspaceS >& /dev/null || emssci; emcsci -nw -c"
+  screen -t emacs bash -i -l # -c "ps x|grep orkspaceC >& /dev/null || ems; emc -nw -c"
+  screen -t bash-0 bash -i -l  
+  screen -t bash-1 bash -i -l
+#  screen -t emacs bash -i -l # -c "ps x|grep orkspaceS >& /dev/null || emssci; emcsci -nw -c"
   select 0
 # get rid of silly xoff stuff
   bind s split
